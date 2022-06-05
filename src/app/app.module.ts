@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { TaskService } from './services/task.service';
+import { UserService } from './services/user.service';
+
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 
@@ -18,7 +21,10 @@ import { TasksComponent } from './components/tasks/tasks.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    TaskService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
