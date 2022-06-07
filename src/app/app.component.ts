@@ -18,9 +18,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.login();
-    this.userService.getUser().subscribe(
-      user => {this.displayName = user.displayName
-      });
   }
  
   login() {
@@ -30,6 +27,13 @@ export class AppComponent implements OnInit {
         this.userService.setToken(loggedUser.token);
         console.log("Login correcto");
         console.log(loggedUser.token);
+        console.log(loggedUser.user);
+        if (sessionStorage.getItem('token')!= null) {
+          this.userService.getUser().subscribe(
+            user => {
+              this.displayName = user.username
+          });
+        }
       },
       (err) => {
         console.error("Error en el login");

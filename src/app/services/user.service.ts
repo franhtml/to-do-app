@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -27,8 +27,9 @@ export class UserService {
   }
 
   getUser() {
-    return this.http.get<any>(`${this.apiRest}/me`)
+    let customHeaders = new HttpHeaders({ Authorization: "Bearer " + sessionStorage.getItem("token")});
+    const requestOptions = { headers: customHeaders };
+    return this.http.get<any>(`${this.apiRest}/me`, requestOptions)
     .pipe(map(res => res));
   }
-  
 }

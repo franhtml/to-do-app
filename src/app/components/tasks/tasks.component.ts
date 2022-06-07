@@ -16,7 +16,7 @@ export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService) {
     this.taskService.getTasks()
       .subscribe(tasks => {
-        console.log(tasks+" asdasdsadasd");
+        console.log(tasks);
         this.tasks = tasks;
     });
   }
