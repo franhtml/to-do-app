@@ -27,9 +27,7 @@ export class UserService {
   }
 
   getUser() {
-    let customHeaders = new HttpHeaders({ Authorization: "Bearer " + sessionStorage.getItem("token")});
-    const requestOptions = { headers: customHeaders };
-    return this.http.get<any>(`${this.apiRest}/me`, requestOptions)
+    return this.http.get<any>(`${this.apiRest}/me`)
     .pipe(map(res => res));
   }
 }
